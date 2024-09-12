@@ -39,71 +39,80 @@ public class CalculatorController {
     String storedNumber = "";
     String resultNumber = "";
     char operator = ' ';
+    boolean equalsUsed = false;
 
     @FXML
     private void handleCalcPad1() {
         currentNumber += "1";
         calcDisplay.setText(currentNumber);
+
     }
 
     @FXML
     private void handleCalcPad2() {
-        currentNumber = currentNumber.concat("2");
+        currentNumber += "2";
         calcDisplay.setText(currentNumber);
     }
 
     @FXML
     private void handleCalcPad3() {
-        currentNumber = currentNumber.concat("3");
+        currentNumber += "3";
         calcDisplay.setText(currentNumber);
     }
 
     @FXML
     private void handleCalcPad4() {
-        currentNumber = currentNumber.concat("4");
+        currentNumber += "4";
         calcDisplay.setText(currentNumber);
     }
 
     @FXML
     private void handleCalcPad5() {
-        currentNumber = currentNumber.concat("5");
+        currentNumber += "5";
         calcDisplay.setText(currentNumber);
     }
 
     @FXML
     private void handleCalcPad6() {
-        currentNumber = currentNumber.concat("6");
+        currentNumber += "6";
         calcDisplay.setText(currentNumber);
     }
 
     @FXML
     private void handleCalcPad7() {
-        currentNumber = currentNumber.concat("7");
+        currentNumber += "7";
         calcDisplay.setText(currentNumber);
     }
 
     @FXML
     private void handleCalcPad8() {
-        currentNumber = currentNumber.concat("8");
+        currentNumber += "8";
         calcDisplay.setText(currentNumber);
     }
 
     @FXML
     private void handleCalcPad9() {
-        currentNumber = currentNumber.concat("9");
+        currentNumber += "9";
         calcDisplay.setText(currentNumber);
     }
 
     @FXML
     private void handleCalcPad0() {
-        currentNumber = currentNumber.concat("0");
+        currentNumber += "0";
         calcDisplay.setText(currentNumber);
     }
 
     @FXML
     private void handleCalcPadAdd() {
 
+        if (currentNumber.length() > 0 && storedNumber.length() > 0) {
+            handleCalcPadEquals();
+            currentNumber = "";
+            calcDisplay.setText(currentNumber);
+        }
+        
         operator = '+';
+
         if(currentNumber.length() > 0) {
             storedNumber = currentNumber;
             currentNumber = "";
@@ -116,6 +125,13 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadMinus() {
+
+
+        if (currentNumber.length() > 0 && storedNumber.length() > 0) {
+            handleCalcPadEquals();
+            currentNumber = "";
+            calcDisplay.setText(currentNumber);
+        }
 
         operator = '-';
 
@@ -131,6 +147,12 @@ public class CalculatorController {
     @FXML
     private void handleCalcPadMultiply() {
 
+        if (currentNumber.length() > 0 && storedNumber.length() > 0) {
+            handleCalcPadEquals();
+            currentNumber = "";
+            calcDisplay.setText(currentNumber);
+        }
+        
         operator = '*';
 
         if(currentNumber.length() > 0) {
@@ -146,6 +168,12 @@ public class CalculatorController {
     @FXML
     private void handleCalcPadDivide() {
         
+        if (currentNumber.length() > 0 && storedNumber.length() > 0) {
+            handleCalcPadEquals();
+            currentNumber = "";
+            calcDisplay.setText(currentNumber);
+        }
+
         operator = '/';
 
         if(currentNumber.length() > 0) {
@@ -160,6 +188,11 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadDot() {
+        if (equalsUsed == true) {
+            equalsUsed = false;
+            handleCalcPadClear();
+        }
+
         if (!currentNumber.contains(".")) {
             currentNumber = currentNumber.concat(".");
             calcDisplay.setText(currentNumber);
@@ -195,6 +228,7 @@ public class CalculatorController {
             calcDisplay.setText(resultNumber);
             storedNumber = resultNumber;
             resultNumber = "";
+            equalsUsed = true;
         }
     }
 
@@ -211,6 +245,11 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadNegative() {
+        if (equalsUsed == true) {
+            equalsUsed = false;
+            handleCalcPadClear();
+        }
+
         if (!currentNumber.startsWith("-")) {
             currentNumber = "-" + currentNumber;
         } else {
@@ -228,15 +267,18 @@ public class CalculatorController {
         calcDisplay.setText(currentNumber);
     }
 
-
     //clears recent entry ( CE )
     @FXML
     private void handleCalcPadCE() {
-        if (resultNumber.length() > 0) {
+        equalsUsedClear(equalsUsed);
+        currentNumber = "";
+        calcDisplay.setText("0");
+    }
+
+    private void equalsUsedClear(boolean equalsUsed) {
+        if (equalsUsed == true) {
+            equalsUsed = false;
             handleCalcPadClear();
         }
-        currentNumber = "";
-        
-        calcDisplay.setText("0");
     }
 }
