@@ -104,7 +104,6 @@ public class CalculatorController {
     private void handleCalcPadAdd() {
 
         operator = '+';
-
         if(currentNumber.length() > 0) {
             storedNumber = currentNumber;
             currentNumber = "";
@@ -195,6 +194,7 @@ public class CalculatorController {
             
             calcDisplay.setText(resultNumber);
             storedNumber = resultNumber;
+            resultNumber = "";
         }
     }
 
