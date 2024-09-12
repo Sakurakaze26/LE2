@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 
 public class CalculatorController {
 
+    @FXML Label subDisplay;
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
     @FXML Button calcPad2;
@@ -41,7 +42,7 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPad1() {
-        currentNumber = currentNumber.concat("1");
+        currentNumber += "1";
         calcDisplay.setText(currentNumber);
     }
 
@@ -101,42 +102,61 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadAdd() {
+
+        operator = '+';
+
         if(currentNumber.length() > 0) {
-            operator = '+';
             storedNumber = currentNumber;
             currentNumber = "";
             calcDisplay.setText(currentNumber);
         }
+
+        subDisplay.setText(storedNumber + " + ");
+
     }
 
     @FXML
     private void handleCalcPadMinus() {
+
+        operator = '-';
+
         if(currentNumber.length() > 0) {
-            operator = '-';
             storedNumber = currentNumber;
             currentNumber = "";
             calcDisplay.setText(currentNumber);
         }
+
+        subDisplay.setText(storedNumber + " - ");
     }
 
     @FXML
     private void handleCalcPadMultiply() {
+
+        operator = '*';
+
         if(currentNumber.length() > 0) {
-            operator = '*';
             storedNumber = currentNumber;
             currentNumber = "";
             calcDisplay.setText(currentNumber);
         }
+
+        subDisplay.setText(storedNumber + " * ");
+
     }
 
     @FXML
     private void handleCalcPadDivide() {
+        
+        operator = '/';
+
         if(currentNumber.length() > 0) {
-            operator = '/';
             storedNumber = currentNumber;
             currentNumber = "";
             calcDisplay.setText(currentNumber);
         }
+
+        subDisplay.setText(storedNumber + " / ");
+
     }
 
     @FXML
@@ -167,8 +187,14 @@ public class CalculatorController {
                     break;
             }
 
+            subDisplay.setText(storedNumber + " " + operator + " " + currentNumber + " = ");
+
+            if (resultNumber.endsWith(".0")) {
+                resultNumber = resultNumber.substring(0, resultNumber.length() - 2);
+            }
+            
             calcDisplay.setText(resultNumber);
-            currentNumber = resultNumber;
+            storedNumber = resultNumber;
         }
     }
 
@@ -180,6 +206,7 @@ public class CalculatorController {
         resultNumber = "";
         operator = ' ';
         calcDisplay.setText("0");
+        subDisplay.setText("");
     }
 
     @FXML

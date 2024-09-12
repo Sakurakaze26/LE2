@@ -96,6 +96,11 @@
                         <Insets right="10.0" />
                      </VBox.margin>
                   </Label>
+                  <Label fx:id="subDisplay" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308">
+                     <VBox.margin>
+                        <Insets right="15.0" />
+                     </VBox.margin>
+                  </Label>
             <Label fx:id="calcDisplay" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="120.0" prefWidth="640.0" text="0">
               <padding>
                 <Insets right="16.0" />
