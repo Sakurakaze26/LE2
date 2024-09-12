@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 
 /**
  * Group Name: GUI-ssica Soho
- * Group Members: Aguilar, William |Ballesteros, Kyle Philip | Dela Cruz, Yves |Mallari, Shaun Owen | Obayan, Arvin Liel | Pasamonte, Hezekiah Myrr | Rodavia, Nicko | John Doe
+ * Group Members: Aguilar, William |Ballesteros, Kyle Philip | Dela Cruz, Yves |Mallari, Shaun Owen | Obayan, Arvin Liel | Pasamonte, Hezekiah Myrr | Rodavia, Nicko
  * Course/Section: CSS124L - BM1
  */
 
