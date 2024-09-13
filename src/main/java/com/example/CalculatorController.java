@@ -270,40 +270,31 @@ public class CalculatorController {
             switch (operator) {
                 case '+':
                     resultNumber = String.valueOf(Double.parseDouble(storedValue) + Double.parseDouble(currentValue));
-                    currentValue = resultNumber;
-                    storedValue = "";
-                    calcDisplay.setText(currentValue);
-                    operator = ' ';
                     break;
 
                 case '-':
                     resultNumber = String.valueOf(Double.parseDouble(storedValue) - Double.parseDouble(currentValue));
-                    currentValue = resultNumber;
-                    storedValue = "";
-                    calcDisplay.setText(currentValue);
-                    operator = ' ';
+
                     break;
                     
                 case '*':
                     resultNumber = String.valueOf(Double.parseDouble(storedValue) * Double.parseDouble(currentValue));
-                    currentValue = resultNumber;
-                    storedValue = "";
-                    calcDisplay.setText(currentValue);
-                    operator = ' ';
+
                     break;
 
                 case '/':
                     resultNumber = String.valueOf(Double.parseDouble(storedValue) / Double.parseDouble(currentValue));
-                    currentValue = resultNumber;
-                    storedValue = "";
-                    calcDisplay.setText(currentValue);
-                    operator = ' ';
-                    break;
-
-                default:
                     break;
             }
 
+            if (resultNumber.endsWith(".0")) {
+                resultNumber = resultNumber.substring(0, resultNumber.length()-2);
+            }
+
+            currentValue = resultNumber;
+            storedValue = "";
+            calcDisplay.setText(currentValue);
+            operator = ' ';
             equalPressed = true;
         }
     }
