@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+
 /**
  * Group Name: GUI-ssica Soho
  * Group Members: Aguilar, William |Ballesteros, Kyle Philip | Dela Cruz, Yves |Mallari, Shaun Owen | Obayan, Arvin Liel | Pasamonte, Hezekiah Myrr | Rodavia, Nicko
@@ -12,7 +13,6 @@ import javafx.scene.control.Label;
 
 public class CalculatorController {
 
-    @FXML Label subDisplay;
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
     @FXML Button calcPad2;
@@ -35,250 +35,325 @@ public class CalculatorController {
     @FXML Button calcPadDelete;
     @FXML Button calcPadCE;
 
-    String currentNumber = "";
-    String storedNumber = "";
+    String storedValue = "";
+    String currentValue = "0";
     String resultNumber = "";
-    char operator = ' ';
-    boolean equalsUsed = false;
+    String tempString = "";
+    boolean equalPressed = false;
+    char operator = ' ';    
 
     @FXML
     private void handleCalcPad1() {
-        currentNumber += "1";
-        calcDisplay.setText(currentNumber);
-
+        if (equalPressed) {
+            handleCalcPadCE();
+            equalPressed = false;
+        }
+        if (currentValue.equals("0")) {
+            currentValue = "";
+        }
+        currentValue += "1";
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
     }
 
     @FXML
     private void handleCalcPad2() {
-        currentNumber += "2";
-        calcDisplay.setText(currentNumber);
+        if (equalPressed) {
+            handleCalcPadCE();
+            equalPressed = false;
+        }
+        if (currentValue.equals("0")) {
+            currentValue = "";
+        }
+        currentValue += "2";
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
     }
 
     @FXML
     private void handleCalcPad3() {
-        currentNumber += "3";
-        calcDisplay.setText(currentNumber);
+        if (equalPressed) {
+            handleCalcPadCE();
+            equalPressed = false;
+        }
+        if (currentValue.equals("0")) {
+            currentValue = "";
+        }
+        currentValue += "3";
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
     }
 
     @FXML
     private void handleCalcPad4() {
-        currentNumber += "4";
-        calcDisplay.setText(currentNumber);
+        if (equalPressed) {
+            handleCalcPadCE();
+            equalPressed = false;
+        }
+        if (currentValue.equals("0")) {
+            currentValue = "";
+        }
+        currentValue += "4";
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
     }
 
     @FXML
     private void handleCalcPad5() {
-        currentNumber += "5";
-        calcDisplay.setText(currentNumber);
+        if (equalPressed) {
+            handleCalcPadCE();
+            equalPressed = false;
+        }
+        if (currentValue.equals("0")) {
+            currentValue = "";
+        }
+        currentValue += "5";
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
     }
 
     @FXML
     private void handleCalcPad6() {
-        currentNumber += "6";
-        calcDisplay.setText(currentNumber);
+        if (equalPressed) {
+            handleCalcPadCE();
+            equalPressed = false;
+        }
+        if (currentValue.equals("0")) {
+            currentValue = "";
+        }
+        currentValue += "6";
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
     }
 
     @FXML
     private void handleCalcPad7() {
-        currentNumber += "7";
-        calcDisplay.setText(currentNumber);
+        if (equalPressed) {
+            handleCalcPadCE();
+            equalPressed = false;
+        }
+        if (currentValue.equals("0")) {
+            currentValue = "";
+        }
+        currentValue += "7";
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
     }
 
     @FXML
     private void handleCalcPad8() {
-        currentNumber += "8";
-        calcDisplay.setText(currentNumber);
+        if (equalPressed) {
+            handleCalcPadCE();
+            equalPressed = false;
+        }
+        if (currentValue.equals("0")) {
+            currentValue = "";
+        }
+        currentValue += "8";
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
     }
 
     @FXML
     private void handleCalcPad9() {
-        currentNumber += "9";
-        calcDisplay.setText(currentNumber);
-    }
+        if (equalPressed) {
+            handleCalcPadCE();
+            equalPressed = false;
+        }
+        if (currentValue.equals("0")) {
+            currentValue = "";
+        }
+        currentValue += "9";
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
+   }
 
     @FXML
     private void handleCalcPad0() {
-        currentNumber += "0";
-        calcDisplay.setText(currentNumber);
+        if (equalPressed) {
+            handleCalcPadCE();
+            equalPressed = false;
+        }
+        if (currentValue.equals("0")) {
+            currentValue = "";
+        }
+        currentValue += "0";
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
     }
 
     @FXML
     private void handleCalcPadAdd() {
 
-        if (currentNumber.length() > 0 && storedNumber.length() > 0) {
-            handleCalcPadEquals();
-            currentNumber = "";
-            calcDisplay.setText(currentNumber);
+        if(operator == '+') {
+            tempString = currentValue;
+            currentValue = storedValue;
+            storedValue = tempString;
         }
         
-        operator = '+';
-
-        if(currentNumber.length() > 0) {
-            storedNumber = currentNumber;
-            currentNumber = "";
-            calcDisplay.setText(currentNumber);
+        if (storedValue != "" && operator != ' ') {
+            operator = '+';
+            calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
+        }else if(currentValue != "") {
+            operator = '+';
+            storedValue = currentValue;
+            currentValue = "";
+            calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
+            equalPressed = false;
         }
-
-        subDisplay.setText(storedNumber + " + ");
-
     }
 
     @FXML
     private void handleCalcPadMinus() {
 
-
-        if (currentNumber.length() > 0 && storedNumber.length() > 0) {
-            handleCalcPadEquals();
-            currentNumber = "";
-            calcDisplay.setText(currentNumber);
+        if(operator == '-') {
+            tempString = currentValue;
+            currentValue = storedValue;
+            storedValue = tempString;
         }
 
-        operator = '-';
-
-        if(currentNumber.length() > 0) {
-            storedNumber = currentNumber;
-            currentNumber = "";
-            calcDisplay.setText(currentNumber);
+        if (storedValue != "" && operator != ' ') {
+            operator = '-';
+            calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
+        }else if(currentValue != "") {
+            operator = '-';
+            storedValue = currentValue;
+            currentValue = "";
+            calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
+            equalPressed = false;
         }
-
-        subDisplay.setText(storedNumber + " - ");
     }
 
     @FXML
     private void handleCalcPadMultiply() {
 
-        if (currentNumber.length() > 0 && storedNumber.length() > 0) {
-            handleCalcPadEquals();
-            currentNumber = "";
-            calcDisplay.setText(currentNumber);
-        }
-        
-        operator = '*';
-
-        if(currentNumber.length() > 0) {
-            storedNumber = currentNumber;
-            currentNumber = "";
-            calcDisplay.setText(currentNumber);
+        if(operator == '*') {
+            tempString = currentValue;
+            currentValue = storedValue;
+            storedValue = tempString;
         }
 
-        subDisplay.setText(storedNumber + " * ");
-
-    }
+        if (storedValue != "" && operator != ' ') {
+            operator = '*';
+            calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
+        }else if(currentValue != "") {
+            operator = '*';
+            storedValue = currentValue;
+            currentValue = "";
+            calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
+            equalPressed = false;
+        }    }
 
     @FXML
     private void handleCalcPadDivide() {
-        
-        if (currentNumber.length() > 0 && storedNumber.length() > 0) {
-            handleCalcPadEquals();
-            currentNumber = "";
-            calcDisplay.setText(currentNumber);
+
+        if(operator == '/') {
+            tempString = currentValue;
+            currentValue = storedValue;
+            storedValue = tempString;
         }
 
-        operator = '/';
-
-        if(currentNumber.length() > 0) {
-            storedNumber = currentNumber;
-            currentNumber = "";
-            calcDisplay.setText(currentNumber);
+        if (storedValue != "" && operator != ' ') {
+            operator = '/';
+            calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
+        }else if(currentValue != "") {
+            operator = '/';
+            storedValue = currentValue;
+            currentValue = "";
+            calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
+            equalPressed = false;
         }
-
-        subDisplay.setText(storedNumber + " / ");
-
     }
 
     @FXML
     private void handleCalcPadDot() {
-        if (equalsUsed == true) {
-            equalsUsed = false;
-            handleCalcPadClear();
+        if (!currentValue.contains(".")) {
+            currentValue += ".";
         }
-
-        if (!currentNumber.contains(".")) {
-            currentNumber = currentNumber.concat(".");
-            calcDisplay.setText(currentNumber);
-        }
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
     }
 
+    //equals
     @FXML
     private void handleCalcPadEquals() {
-        if (storedNumber.length() > 0) {
+        if (currentValue != "") {
             switch (operator) {
                 case '+':
-                    resultNumber = String.valueOf(Double.parseDouble(storedNumber) + Double.parseDouble(currentNumber));
+                    resultNumber = String.valueOf(Double.parseDouble(storedValue) + Double.parseDouble(currentValue));
+                    currentValue = resultNumber;
+                    storedValue = "";
+                    calcDisplay.setText(currentValue);
+                    operator = ' ';
                     break;
+
                 case '-':
-                    resultNumber = String.valueOf(Double.parseDouble(storedNumber) - Double.parseDouble(currentNumber));
+                    resultNumber = String.valueOf(Double.parseDouble(storedValue) - Double.parseDouble(currentValue));
+                    currentValue = resultNumber;
+                    storedValue = "";
+                    calcDisplay.setText(currentValue);
+                    operator = ' ';
                     break;
+                    
                 case '*':
-                    resultNumber = String.valueOf(Double.parseDouble(storedNumber) * Double.parseDouble(currentNumber));
+                    resultNumber = String.valueOf(Double.parseDouble(storedValue) * Double.parseDouble(currentValue));
+                    currentValue = resultNumber;
+                    storedValue = "";
+                    calcDisplay.setText(currentValue);
+                    operator = ' ';
                     break;
+
                 case '/':
-                    resultNumber = String.valueOf(Double.parseDouble(storedNumber) / Double.parseDouble(currentNumber));
+                    resultNumber = String.valueOf(Double.parseDouble(storedValue) / Double.parseDouble(currentValue));
+                    currentValue = resultNumber;
+                    storedValue = "";
+                    calcDisplay.setText(currentValue);
+                    operator = ' ';
                     break;
+
                 default:
                     break;
             }
 
-            subDisplay.setText(storedNumber + " " + operator + " " + currentNumber + " = ");
-
-            if (resultNumber.endsWith(".0")) {
-                resultNumber = resultNumber.substring(0, resultNumber.length() - 2);
-            }
-            
-            calcDisplay.setText(resultNumber);
-            storedNumber = resultNumber;
-            resultNumber = "";
-            equalsUsed = true;
+            equalPressed = true;
         }
     }
 
-    //clears everything ( C )
+    //clears recent entry ( C )
     @FXML
     private void handleCalcPadClear() {
-        currentNumber = "";
-        storedNumber = "";
-        resultNumber = "";
-        operator = ' ';
-        calcDisplay.setText("0");
-        subDisplay.setText("");
+        if (operator != ' ') {
+            currentValue = "";
+        }else{
+            currentValue = "0";
+        }
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
     }
 
+    //negative ( +/- )
     @FXML
     private void handleCalcPadNegative() {
-        if (equalsUsed == true) {
-            equalsUsed = false;
-            handleCalcPadClear();
+        if (currentValue != "") {
+            double val = Double.parseDouble(currentValue);
+            val = -val;
+            if (val == (int) val) {
+                currentValue = String.valueOf((int) val);
+            } else {
+                currentValue = String.valueOf(val);
+            }
+            calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
         }
 
-        if (!currentNumber.startsWith("-")) {
-            currentNumber = "-" + currentNumber;
-        } else {
-            currentNumber = currentNumber.substring(1);
-        }
-        calcDisplay.setText(currentNumber);
     }
 
     //backspace ( DEL )
     @FXML
     private void handleCalcPadDelete() {
-        if (currentNumber.length() > 0) {
-            currentNumber = currentNumber.substring(0, currentNumber.length() - 1);
+        if (currentValue.length() > 0) {
+            currentValue = currentValue.substring(0, currentValue.length() - 1);
+        }else if (operator != ' ') {
+            operator = ' ';
+        }else{
+            storedValue = storedValue.substring(0, storedValue.length() - 1);
         }
-        calcDisplay.setText(currentNumber);
+        calcDisplay.setText(storedValue + " " + operator + " " + currentValue);
     }
 
-    //clears recent entry ( CE )
+    //clears EVERYTHING ( CE )
     @FXML
     private void handleCalcPadCE() {
-        equalsUsedClear(equalsUsed);
-        currentNumber = "";
-        calcDisplay.setText("0");
-    }
-
-    private void equalsUsedClear(boolean equalsUsed) {
-        if (equalsUsed == true) {
-            equalsUsed = false;
-            handleCalcPadClear();
-        }
+        currentValue = "0";
+        storedValue = "";
+        operator = ' ';
+        calcDisplay.setText(currentValue);
     }
 }

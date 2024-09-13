@@ -91,11 +91,6 @@
       <children>
         <VBox prefHeight="600.0" prefWidth="400.0">
           <children>
-                  <Label fx:id="calcSubDisplay" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308">
-                     <VBox.margin>
-                        <Insets right="10.0" />
-                     </VBox.margin>
-                  </Label>
                   <Label fx:id="subDisplay" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308">
                      <VBox.margin>
                         <Insets right="15.0" />
