@@ -333,6 +333,8 @@ public class CalculatorController {
             currentValue = currentValue.substring(0, currentValue.length() - 1);
         }else if (operator != ' ') {
             operator = ' ';
+            currentValue = storedValue;
+            storedValue = "";
         }else{
             storedValue = storedValue.substring(0, storedValue.length() - 1);
         }
