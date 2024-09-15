@@ -270,9 +270,16 @@ public class CalculatorController {
     //clears recent entry ( CE )
     @FXML
     private void handleCalcPadCE() {
-        equalsUsedClear(equalsUsed);
-        currentNumber = "";
-        calcDisplay.setText("0");
+        if (!currentNumber.isEmpty()) {
+
+            currentNumber = currentNumber.substring(0, currentNumber.length() - currentNumber.length());
+
+            if (currentNumber.isEmpty()) {
+                calcDisplay.setText("0");
+            } else {
+                calcDisplay.setText(currentNumber);
+            }
+        }
     }
 
     private void equalsUsedClear(boolean equalsUsed) {
